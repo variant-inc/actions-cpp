@@ -1,5 +1,5 @@
 ---
-name: Branch nodejs image push to ECR
+name: Branch c++ image push to ECR
 on:
   push:
     paths-ignore:

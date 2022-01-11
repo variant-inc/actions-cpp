@@ -35,18 +35,13 @@ export GITHUB_USER="$GITHUB_REPOSITORY_OWNER"
 
 echo "End: Setting Prerequisites"
 
-echo "Start: yarn install"
-yarn install
-sudo chown -R 1000:1000 "$GITHUB_WORKSPACE"/*
-echo "End: yarn install"
-
-echo "Start: yarn test"
-yarn run "$INPUT_NPM_TEST_SCRIPT_NAME"
-echo "End: yarn test"
-
 echo "Start: Sonar Scan"
 sh -c "/scripts/coverage_scan.sh"
 echo "End: Sonar Scan"
+
+echo "Start: Conan"
+sh -c "/scripts/conan.sh"
+echo "End: Conan"
 
 echo "Container Push: $INPUT_CONTAINER_PUSH_ENABLED"
 if [ "$INPUT_CONTAINER_PUSH_ENABLED" = 'true' ]; then
@@ -57,6 +52,10 @@ if [ "$INPUT_CONTAINER_PUSH_ENABLED" = 'true' ]; then
   ./actions-collection/scripts/publish.sh
   echo "End: Publish Image to ECR"
 fi
+
+echo "Start: Conan Clean up"
+sh -c "/scripts/conan_clean.sh"
+echo "End: Conan Clean up"
 
 echo "Start: Clean up"
 sudo git clean -fdx

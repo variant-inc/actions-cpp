@@ -1,5 +1,5 @@
 ---
-name: CI Pipeline for lazy nodejs image push to ECR
+name: CI Pipeline for lazy c++ image push to ECR
 on:
   release:
     types: ["created"]
