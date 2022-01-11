@@ -1,0 +1,18 @@
+name: "Lazy Action C++"
+description: "Github action to perform build, test, scan and generate image."
+inputs:
+  dockerfile_dir_path:
+    description: "Directory path to the dockerfile"
+    required: false
+    default: "."
+  ecr_repository:
+    description: "ECR repository name"
+    required: true
+  container_push_enabled:
+    description: "Enable Build and Push Container Image"
+    required: true
+    default: "true"
+runs:
+  using: "docker"
+  image: ""
+
