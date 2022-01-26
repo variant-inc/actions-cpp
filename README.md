@@ -202,11 +202,6 @@ jobs:
                 cmake.configure(source_folder="src")
                 cmake.build()
 
-                # Explicit way:
-                # self.run('cmake %s/hello %s'
-                #          % (self.source_folder, cmake.command_line))
-                # self.run("cmake --build . %s" % cmake.build_config)
-
             def package(self):
                 self.copy("*.hpp", dst="include", src="src")
                 self.copy("*.lib", dst="lib", keep_path=False)
