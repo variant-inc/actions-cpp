@@ -1,0 +1,32 @@
+name: "Lazy Action C++"
+description: "Github action to perform build, test, scan and generate image."
+inputs:
+  dockerfile_dir_path:
+    description: "Directory path to the dockerfile"
+    required: false
+    default: "."
+  ecr_repository:
+    description: "ECR repository name"
+    required: false
+  container_push_enabled:
+    description: "Enable Build and Push Container Image"
+    required: false
+    default: "false"
+  conan_push_enabled:
+    description: "Enable Build and Push with Conan"
+    required: false
+    default: "false"
+  conan_url:
+    description: "URL for JFrog"
+    required: false
+  gcc_version:
+    description: "GCC and G++ Version"
+    default: "9"
+    required: false
+  github_token:
+    description: "Github Token from Workflow"
+    required: true
+runs:
+  using: "docker"
+  image: "docker://public.ecr.aws/p4v7w0a5/lazy/cpp-action:test-latest"
+
