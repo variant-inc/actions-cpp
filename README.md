@@ -38,7 +38,7 @@ Action for CI workflow for Cpp applications
     ```yaml
      - name: Setup
        uses: variant-inc/actions-setup@v1
-         id: actions-setup
+        id: actions-setup
     ```
 
 Refer [actions-setup](https://github.com/variant-inc/actions-setup) for documentation.
@@ -122,7 +122,7 @@ jobs:
 
       - name: Actions Setup
         uses: variant-inc/actions-setup@v1
-          id: actions-setup
+        id: actions-setup
 
       - name: Actions Cpp
         id: actions-cpp
@@ -131,7 +131,6 @@ jobs:
           conan_push_enabled: true
           conan_url: https://drivevariant.jfrog.io/artifactory/api/conan/cybertron-conan
           gcc_version: 9
-           v
 
       - name: Actions Octopus
         uses: variant-inc/actions-octopus@v2
