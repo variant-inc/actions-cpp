@@ -20,4 +20,7 @@ echo "===Execute tests defined by the CMake configuration.==="
 # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
 cd "$GITHUB_WORKSPACE"/build
 echo "Current directory: $(pwd)"
+
+echo "ls"
+ls
 ctest -C Release
