@@ -41,6 +41,18 @@ RUN apt-get update &&\
   rm -rf matching cache rm /var/lib/apt/lists/*
 
 # dockerfile_lint - ignore
+RUN rm -rf /var/lib/apt/lists/* &&\
+  \
+  curl -sL https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip -o awscliv2.zip &&\
+  unzip awscliv2.zip &&\
+  aws/install &&\
+  rm -rf \
+  awscliv2.zip \
+  aws &&\
+  rm -rf /var/cache/apt/* &&\
+  aws --version
+
+# dockerfile_lint - ignore
 RUN curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg &&\
   echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian \
