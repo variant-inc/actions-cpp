@@ -92,6 +92,15 @@ RUN python3 -m pip install --upgrade pip; \
     pip3 install conan; \
     pip3 install conan_package_tools;
 
+#install powershell
+RUN curl -sLo "packages-microsoft-prod.deb" https://packages.microsoft.com/config/debian/10/packages-microsoft-prod.deb &&\
+  dpkg -i packages-microsoft-prod.deb &&\
+  apt-get update &&\
+  apt-get install -y --no-install-recommends \
+  powershell &&\
+  rm -rf /var/lib/apt/lists/* &&\
+  pwsh -v;
+
 COPY . /
 
 RUN CONFIG_GCOV_KERNEL=y; \
