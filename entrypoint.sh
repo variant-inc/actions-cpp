@@ -78,9 +78,22 @@ echo "Start: Conan"
 sh -c "/scripts/conan.sh"
 echo "End: Conan"
 
-echo "Start: Coverage Scan"
-sh -c "/scripts/coverage_scan.sh"
-echo "End: Coverage Scan"
+echo "Start: Enable sonar"
+pwsh ./actions-collection/scripts/enable_sonar.ps1
+echo "End: Enable sonar"
+
+echo "Start: Check sonar run"
+skip_sonar_run=$(pwsh ./actions-collection/scripts/skip_sonar_run.ps1)
+echo "Skip sonar run: $skip_sonar_run"
+echo "End: Check sonar run"
+
+if [ "$skip_sonar_run" != 'True' ]; then
+  echo "Start: Coverage Scan"
+  sh -c "/scripts/coverage_scan.sh"
+  echo "End: Coverage Scan"
+else
+  echo "Skipping sonar run"
+fi
 
 echo "Conan Push: $INPUT_CONAN_PUSH_ENABLED"
 if [ "$INPUT_CONAN_PUSH_ENABLED" = 'true' ]; then
