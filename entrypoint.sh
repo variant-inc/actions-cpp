@@ -22,8 +22,10 @@ echo "Start: Setting Prerequisites"
 cd "$GITHUB_WORKSPACE"
 echo "Current directory: $(pwd)"
 
+git config --global --add safe.directory /github/workspace
+
 echo "Cloning into actions-collection..."
-git clone -b v1 https://github.com/variant-inc/actions-collection.git ./actions-collection
+git clone -b f/CLOUD-1741 https://github.com/variant-inc/actions-collection.git ./actions-collection
 
 echo "---Start: Pretest script"
 chmod +x ./actions-collection/scripts/pre_test.sh
