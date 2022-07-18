@@ -28,5 +28,5 @@ inputs:
     required: true
 runs:
   using: "docker"
-  image: "docker://public.ecr.aws/p4v7w0a5/lazy/cpp-action:test-latest"
+  image: "docker://public.ecr.aws/p4v7w0a5/lazy/cpp-action:sha-f7e495f2cc8dd1259879381279b58334f474760e"
 
